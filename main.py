@@ -15,4 +15,5 @@ sens4 = Pin(34, Pin.IN)
 
 while(1):
     print( "\n",sens1.value(),"\n", sens2.value(),"\n", sens3.value(),"\n", sens4.value(),"\n")
-    sleep(3)
+    
+    sleep(1)
