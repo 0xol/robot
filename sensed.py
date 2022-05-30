@@ -10,32 +10,35 @@ class Sensed:
     self.sens3 = Pin(sen3, Pin.IN)
     self.sens4 = Pin(sen4, Pin.IN)
     
+  def values(self):
+    return self.sens1.value(), self.sens2.value(), self.sens3.value(), self.sens4.value()
+    
   def sense1(self):
     if self.sens1.value(1) == True:
-      self.sense1 = True
+      self.sensed1 = True
     elif self.sens1.value(1) /= True:
-      self.sense1 = False
-    return self.sense1
+      self.sensed1 = False
+    return self.sensed1
     
   def sense2(self):
     if self.sens2.value(1) == True:
-      self.sense2 = True
+      self.sensed2 = True
     elif self.sens2.value(1) /= True:
-      self.sense2 = False
-    return self.sense2
+      self.sensed2 = False
+    return self.sensed2
   
   def sense3(self):
     if self.sens3.value(1) == True:
-      self.sense3 = True
+      self.sensed3 = True
     elif self.sens3.value(1) /= True:
-      self.sense3 = False
-    return self.sense3
+      self.sensed3 = False
+    return self.sensed3
   
   def sense4(self):
     if self.sens4.value(1) == True:
-      self.sense4 = True
+      self.sensed4 = True
     elif self.sens4.value(1) /= True:
-      self.sense4 = False
-    return self.sense4
+      self.sensed4 = False
+    return self.sensed4
              
              
