@@ -8,7 +8,13 @@ from sensed import Sensed
 #sensor3 = D35
 #sensor4 = D34
 
+sens1 = Pin(33, IN)
+sens2 = Pin(32, IN)
+sens3 = Pin(35, IN)
+sens4 = Pin(34, IN)
+
 robot = Motor()
+s = Sensed()
 
 time_allowed = 180
 start_time = time()
@@ -33,11 +39,11 @@ while end == False:
         robot.drive(1, 90)
         sleep(1)
         
-        if sense1 or sense2 or sense3 or sense4 == True:
+        if s.sense1 or s.sense2 or s.sense3 or s.sense4 == True:
             robot.drive(300, 0)
             sleep(0.1)
             
-            if sense1 or sense2 or sense3 or sense4 == True:
+            if s.sense1 or s.sense2 or s.sense3 or s.sense4 == True:
                 driving = True
                 restarting = False
                 
@@ -48,7 +54,7 @@ while end == False:
     while start == True:
         robot.drive(300, 0)
         sleep(0.1)
-        if sense1 and sense2 and sense3 and sense4 /= True:
+        if s.sense1 and s.sense2 and s.sense3 and s.sense4 /= True:
             start = False
             driving = True
     #starts the track
@@ -57,11 +63,11 @@ while end == False:
         robot.drive(1, 90)
         sleep(1)
         
-        if sense1 or sense2 or sense3 or sense4 == True:
+        if s.sense1 or s.sense2 or s.sense3 or s.sense4 == True:
             robot.drive(300, 0)
             sleep(0.1)
             
-            if sense1 or sense2 or sense3 or sense4 == True:
+            if s.sense1 or s.sense2 or s.sense3 or s.sense4 == True:
                 turning_around = False
                 returning = True
                 
@@ -72,14 +78,14 @@ while end == False:
     
     while driving or returning == True:
         
-        print(sens1.value(), sens2.value(), sens3.value(), sens4.value()
+        print(s.values)
 
-        if sense1 and sense2 and sense3 and sense4 == True:
+        if s.sense1 and s.sense2 and s.sense3 and s.sense4 == True:
             if driving == True:
                 robot.drive(1, 90)
                 sleep(0.1)
                 
-                if sense1 and sense3 or sense2 and sense4 == True:
+                if s.sense1 and s.sense3 or s.sense2 and s.sense4 == True:
                     driving = False
                     turning_around = True
         
@@ -87,43 +93,50 @@ while end == False:
                 if intersection1 == False:
                     robot.drive(300, 90)
                     sleep(1)
+                   
+                    if s.sense1 or s.sense2 or s.sense3 or s.sense4 == True:
+                        intersection1 = True
                     
                 elif intersetion2 == False:
                     robot.drive(300, -90)
                     sleep(1)
-                #fix if turns wrong way
+                    
+                    if s.sense1 or s.sense2 or s.sense3 or s.sense4 == True:
+                        intersection2 = True
+                #fix if turns wrong way or too far/fast
                 
                 elif intersection2 == True:
                     robot.drive(1, 90)
                     sleep(0.1)
                 
-                    if sense1 and sense3 or sense2 and sense4 == True:
+                    if s.sense1 and s.sense3 or s.sense2 and s.sense4 == True:
                         returning = False
                         intersection1 = False
                         intersection2 = False
                         end = True
         #checks to see if at tower, end or an intersection
         
-        elif sense1 and sense2 == True:
+        elif s.sense1 and s.sense2 == True:
             robot.drive(300, -90)
             sleep(1)
             
-        elif sense3 and sense4 == True:
+        elif s.sense3 and s.sense4 == True:
             robot.drive(300, 90)
             sleep(1)
         
-        elif sense1 == True:
+        elif s.sense1 == True:
             robot.drive(300, -45)
             
-        elif sense4 == True:
+        elif s.sense4 == True:
             robot.drive(300, 45)
             
-        elif sense2 == True:
+        elif s.sense2 == True:
             robot.drive(300, -20)
             
-        elif sense3 == True:
+        elif s.sense3 == True:
             robot.drive(300, 20)
-        #general driving
+        #general line following     
+        #may need to adjust values
         
 if end == True:
 laps += 1
