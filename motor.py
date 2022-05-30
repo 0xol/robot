@@ -49,13 +49,6 @@ class Motor:
             if speed > 1023: speed = 1023
             self.bpwm_pin.duty(speed)
     
-    def steer(self, speed):
-        steer = speed
-    
-    def forward(self):
-        self.right(1)
-        self.left(1)
-    
     def stop(self):
         self.right(0)
         self.left(0)
