@@ -3,18 +3,9 @@ from time import sleep, time
 from motor import Motor
 from sensed import Sensed
 
-#sensor1 = D33
-#sensor2 = D32
-#sensor3 = D35
-#sensor4 = D34
-
-sens1 = Pin(33, IN)
-sens2 = Pin(32, IN)
-sens3 = Pin(35, IN)
-sens4 = Pin(34, IN)
-
 robot = Motor()
 s = Sensed()
+#changes Class names
 
 time_allowed = 180
 start_time = time()
@@ -170,10 +161,3 @@ elif total_time - start_time > time_allowed
     print()
     print("The robot completed " + laps + " laps.")
     print("The robot's fastest time was: " + best_time + " seconds.")
-    
-            
-            
-            
-            
-            
-    
