@@ -3,15 +3,18 @@ from machine import Pin
 
 class Sensed:
   
-  def __init__(self, sen1=33, sen2=32, sen3=35, sen4=34):
-               
+  def __init__(self, sen1=33, sen2=32, sen3=35, sen4=34):     
     self.sens1 = Pin(sen1, Pin.IN)
     self.sens2 = Pin(sen2, Pin.IN)
     self.sens3 = Pin(sen3, Pin.IN)
     self.sens4 = Pin(sen4, Pin.IN)
     
   def values(self):
-    return self.sens1.value(), self.sens2.value(), self.sens3.value(), self.sens4.value()
+    self.s1 = self.sens1.value()
+    self.s2 = self.sens2.value()
+    self.s3 = self.sens3.value()
+    self.s4 = self.sens4.value()
+    return self.s1, self.s2, self.s3, self.s4
     
   def sense1(self):
     if self.sens1.value(1) == True:
