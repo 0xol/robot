@@ -114,6 +114,7 @@ while end == False:
         elif s.sense3 and s.sense4 == True:
             robot.drive(300, 90)
             sleep(1)
+        #fix if turns wrong way or too far/fast
         
         elif s.sense1 == True:
             robot.drive(300, -45)
